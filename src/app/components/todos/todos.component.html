@@ -1,0 +1,26 @@
+<div class="todos">
+  <form (submit)="addTodo()">
+    <input
+      type="text"
+      name="inputTodo"
+      id="todo-input"
+      placeholder="Enter todo ..."
+      [(ngModel)]="inputTodo"
+    />
+    <input type="submit" value="Add todo" class="add-btn" />
+  </form>
+  <div
+    *ngFor="let todo of todos; let index = index"
+    class="todo {{ todo.completed ? 'done' : '' }}"
+  >
+    <div class="id">{{ index }}</div>
+    <div class="content" (click)="toggleDone(index)">{{ todo.content }}</div>
+    <button class="delete" (click)="toggleDelete(index)">Remove</button>
+  </div>
+
+  <!-- <ul>
+    @for (c of contacts; track c.id) {
+      <li>{{c.id}} - {{c.name}}</li>
+    }
+  </ul> -->
+</div>
